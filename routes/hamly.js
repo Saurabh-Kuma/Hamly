@@ -3,12 +3,12 @@ const path = require('path')
 const safe= require("./safe")
 const router = express.Router()
 const axios = require('axios');
-
+ 
 const uri= safe.uri
 var config = safe.config
 var dbinfo= safe.dbinfo
 var data={}
-var result={} 
+var result={}  
     
 router.get('/dashboard/:email', (req, res)=>{ 
     
