@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamly Login</title>
+    <link href="/format.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/loginValidation.js" defer></script>
+    
+</head> 
+<body>
+    <div class="div1">
+        <font class="heading" >Welcome to Hamly</font><br>
+        <font color="black" size="6sp" >Login</font><br><br>
+    <form action="/login/submit" id="submitForm" method="post">
+        <label class="font1">USERNAME: </label><br> 
+        <input type="text" size="30px" name="userid" id="userid" placeholder="enter userId"> <br><br>
+        <lable class="font1"> PASSWORD: </lable><br> 
+        <input type="password" size="30px" name="pass" id="pass" placeholder="enter password"><br>
+        <input type="checkbox" name="keepme" value="checked">
+        <font size="2 px">keep me signed in</font> <br>
+        <label id="emailmsg" style="font-size: 12px; font-family:neo-sans; color:red"></label><br>
+        <input type="submit" Value="Sign In">
+        <input type="reset" value="Reset"><br><br>
+        <label >don't have ID</label>
+        <a href="/signup" style="font-size: 14px;">click here</a><br><br>
+    </form>
+    </div>
+</body>
+</html>

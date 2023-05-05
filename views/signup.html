@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamly SignUp</title>
+    <link href="/format.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="/validation.js" defer></script>
+</head>
+<body> 
+    <div class="div1">
+      <form action='/signup/submit' method="post">
+        <font class="heading">Sign Up On Hamly</font><br><br>
+        <label class="font1">First Name :</label>
+        <input type="text" name="firstName" id="firstName" placeholder="enter your first name" size="30px"/><br><br>
+        <label class="font1">Last Name :</label>
+        <input type="text" name="lastName" id="lastName" placeholder="enter your last name" size="30px"/><br><br>
+        <label class="font1">Email Id :</label>
+        <input type="email" name="email" id="email" placeholder="enter your email" size="30px"/>
+        <label id="emailmsg" style="font-size: 12px; font-family:neo-sans; color:red"></label><br><br>
+        <label class="font1">Gender :</label>
+        <input type="radio" name="gen" value="male"/>male
+        <input type="radio" name="gen" value="female"/>female
+        <input type="radio" name="gen" value="other"/>other <br><br>
+        <lable class="font1">Password :</lable>
+        <input type="password"  size="30px" onblur="isSecure()"  name="pass" id="pass" placeholder="enter new password"/><br><br>
+        <lable class="font1">Re-enter Password :</lable>
+        <input type="password"  size="30px" onblur="isSame()" name="repass" id="repass" placeholder="re-enter password"/><br><br> 
+        <input type="submit" value="Create Id" />
+        <input type="reset" value="Reset form"  /><br><br>
+        <label>Already have ID go to login page</label>
+        <a href="/login" style="font-size: 14px;">click here</a>
+      </form>
+    </div>
+</body>
+</html>
