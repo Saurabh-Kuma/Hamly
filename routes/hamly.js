@@ -10,13 +10,18 @@ var dbinfo= safe.dbinfo
 var data={}
 var result={}  
     
+router.get('/dashboard', (req, res)=>{
+    res.render('withoutlogin')
+})
+
+router.get('/dashboard')
+
 router.get('/dashboard/:email', (req, res)=>{ 
-    
     //this is configuration of database 
     data = {
         ...config,
         url: uri+"/findOne",
-        data: {
+        data: { 
         ...dbinfo,
         "filter":{
             "email": req.params.email

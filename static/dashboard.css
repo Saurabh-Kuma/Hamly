@@ -1,0 +1,61 @@
+/* body {
+    background-image: url("/image/background/background7 (876 kb).jpg");
+    opacity: 0.7;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+} */
+
+html {
+    height: 100%;
+}
+
+.fx-1 {
+    font-size: 2vw;
+    font-family: Helvetica;
+}
+
+#name-button {
+    border-radius: 50%;
+    font-size: 1.5vw;
+    font-weight: normal;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#name-button:hover {
+    width: auto;
+    border-radius: 3vh;
+}
+
+@media (min-width: 650px) {
+    #history-section {
+        width: 20%;
+    }
+
+    #history-button {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    #history-section {
+        transform: translateX(-100%);
+        display: none;
+        position: absolute;
+        width: 70vw;
+    }
+
+    #history-button {
+        transform: translateX(0);
+    }
+
+    #analatics-div {
+        display: none;
+    }
+}
+
+.a-tag{
+    color: aquamarine;
+    text-decoration: none;
+}
