@@ -1,37 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamly SignUp</title>
-    <link href="/format.css" rel="stylesheet" type="text/css"/>
-    <script type="text/javascript" src="/validation.js" defer></script>
+    <title>Hamely: Signup</title>
+    <link rel="icon" type="image/x-icon" href="/image/icons/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css" />
+    <script type="text/javascript" src="/js/signupValidation.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
 </head>
-<body> 
-    <div class="div1">
-      <form action='/signup/submit' method="post">
-        <font class="heading">Sign Up On Hamly</font><br><br>
-        <label class="font1">First Name :</label>
-        <input type="text" name="firstName" id="firstName" placeholder="enter your first name" size="30px"/><br><br>
-        <label class="font1">Last Name :</label>
-        <input type="text" name="lastName" id="lastName" placeholder="enter your last name" size="30px"/><br><br>
-        <label class="font1">Email Id :</label>
-        <input type="email" name="email" id="email" placeholder="enter your email" size="30px"/>
-        <label id="emailmsg" style="font-size: 12px; font-family:neo-sans; color:red"></label><br><br>
-        <label class="font1">Gender :</label>
-        <input type="radio" name="gen" value="male"/>male
-        <input type="radio" name="gen" value="female"/>female
-        <input type="radio" name="gen" value="other"/>other <br><br>
-        <lable class="font1">Password :</lable>
-        <input type="password"  size="30px" onblur="isSecure()"  name="pass" id="pass" placeholder="enter new password"/><br><br>
-        <lable class="font1">Re-enter Password :</lable>
-        <input type="password"  size="30px" onblur="isSame()" name="repass" id="repass" placeholder="re-enter password"/><br><br> 
-        <input type="submit" value="Create Id" />
-        <input type="reset" value="Reset form"  /><br><br>
-        <label>Already have ID go to login page</label>
-        <a href="/login" style="font-size: 14px;">click here</a>
-      </form>
+
+<body style="font-family: Helvetica; background-color: #e8fdf1;">
+    <div>
+
+        <div class="p-3.bg-gradient"
+            style="height: 15%; display: flex; justify-content: space-between; align-items:center; padding-top: 1%; padding-bottom: 1%; background-color:#40AE49;">
+            <div id="div-logo" style="height: 100%;">
+                <img id="img-logo" src="/image/logo/AppLogo&Name(inverted).png" style="height:11vh; margin-left: 4vw">
+            </div>
+        </div>
+
+        <div class="row" style=" width: 100%; font-size:5vh; text-align:center; padding-top:3vh; color: #40AE49; font-size: 6vh;">
+            <b> Sign Up</b>
+        </div>
+        
+        <div class="row" style="width: 100%; margin-left: 0vh;">
+            <div class="col-md-3"></div>
+            <div class="col-md-6"
+                style=" border:0.8vh solid #40AE49; border-radius:5vh; margin-top: 1%; margin-bottom: 3%;">
+                <form action="/signup/submit" method="post" style="font-size: 2vh">
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label> First Name : </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" name="firstName" id="firstName" required placeholder="Enter Your First Name" 
+                                class="form-control" 
+                                onkeypress="return onlyAlphabets(event,this);" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label> Last Name : </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text"  name="lastName" id="lastName" required class="form-control" placeholder="Enter Your Last Name"
+                             onkeypress="return onlyAlphabets(event,this);" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label> Mobile Number : </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="number" onkeypress="if (this.value.length==10) return false" id="mobileNumber"
+                                name="mobileNumber" required placeholder="Enter Your Mobile Number " class="form-control" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label> Email-Id : </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="email" name="email" id="email" required placeholder="Enter Your Email-Id" class="form-control" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label> Gender : </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <!-- <select class="form-control" required name="gen">
+                                <option selected disabled value="Select">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select> -->
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" required type="radio" name="gen" value="male" style="border: 0.2vh solid #40AE49;">
+                                <label class="form-check-label" style="margin-bottom: 0vh;">Male</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gen" value="female" style="border: 0.2vh solid #40AE49;">
+                                <label class="form-check-label">Female</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="gen" value="other" style="border: 0.2vh solid #40AE49;">
+                                <label class="form-check-label">Other</label>
+                              </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label> Password : </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="password" name="pass" id="pass" required onblur="isSecure()" placeholder="Enter Your Password"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label> Re-Enter Password: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="password" name="repass" id="repass" required oninput="isSame()" placeholder="Re-Enter Your Password" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-row">
+                            <div class="form-group col-sm-12" style="margin-top: 3%;">
+                                <center>
+                                    <label id="emailmsg" disabled style="font-size: 2vh; color:red"></label><br>
+                                    <button type="submit" class="btn"
+                                        style="width: 15vh; background-color: #40AE49; border: 0; color: white;"
+                                        id="btnSubmit">Signup</button>
+                                    <button type="reset" class="btn btn-secondary"
+                                        style="width: 15vh; margin-left: 3vh; border: 0;" id="Rest">Reset</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="height:0.3vh; border-width:0; color:gray; background-color:gray">
+                    <center>
+                        <h4><b>Already Registered ? </b><a href="/login"
+                                style="text-decoration: none; color:#40AE49"><u> Click Login here
+                                </u></a></h4>
+                    </center>
+                </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+    <div style="height:fit-content; ">
+        <footer style="height: 100%; display:flex; flex-direction:column; background-color:#40AE49;">
+            <div
+                style=" height:60%; background-color:#40AE49; color:white; display:flex; justify-content:center; align-items:center; font-size:2vh;">
+                © 2023 Copyright
+                <a href=""><b>All Rights Reserved to Hamly</b></a>
+
+            </div>
+            <div
+                style="display: flex; height:40%;  background-color:#40AE49; justify-content:center; font-size:2vh; align-items:center; flex-wrap:wrap; height:fit-content;">
+                <div>
+                    <a target="_blank" href="/aboutUs">About Us |</a> <a target="_blank" href="/contactUs">Contact Us |<a target="_blank" href="/privacyPolicy"> Privacy Policy |</a>
+                </div>
+				<div>
+					<a href="https://www.facebook.com/login/" class="fa fa-facebook"></a>
+					<a href="https://twitter.com/i/flow/login" class="fa fa-twitter"></a>
+					<a href="https://in.linkedin.com/" class="fa fa-linkedin"></a>
+					<a href="https://www.instagram.com/" class="fa fa-instagram"></a></p>
+				</div>
+            </div>
+        </footer>
     </div>
 </body>
+
 </html>

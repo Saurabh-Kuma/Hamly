@@ -1,5 +1,3 @@
-//console.log("this is fron dashboard.js")
-
 const historyButton = document.querySelector('#history-button');
 const historySection = document.querySelector('#history-section');
 var media = window.matchMedia('(max-width: 650px)');
@@ -10,10 +8,15 @@ var mobileview
 var login
 window.onload = () => {
     const params = new URLSearchParams(window.location.search)
-    const message = params.get('message');
     if (window.location.pathname == "/dashboard") {
-        //document.getElementById("name-button").style.display = "none"
         login = false
+        var result= params.get('result')
+        var text= params.get('text')
+        if(result!= null){
+            document.getElementById("floatingTextarea2").value = text.replace(/@backtick/g, "`")
+            document.getElementById("floatingEmptyPlaintextInput").value = "Result: " + result
+            document.getElementById("submitButton").disabled = true
+        }
         document.getElementById("total").style.display = "none"
         document.getElementById("spam").style.display = "none"
         document.getElementById("percentage").style.display = "none"
@@ -21,13 +24,15 @@ window.onload = () => {
         document.getElementById("spamp").style.display = "none"
         document.getElementById("percentagep").style.display = "none"
         document.getElementById("navigation-list").style.display = "none"
-        document.getElementById("div-logo").style.width = "100%"; 
-        document.getElementById("div-logo").style.textAlign = "center";
-        document.getElementById("img-logo").style.marginLeft = "0";
-        historySection.style.overflow= "unset"
-        document.getElementById("div-history-button").style.display= "none"
-        document.getElementById("login-warning").style.display= "block"
-    }
+        //document.getElementById("div-logo").style.width = "100%";
+        //document.getElementById("div-logo").style.textAlign = "center";
+        //document.getElementById("img-logo").style.marginLeft = "0";
+        historySection.style.overflow = "unset"
+        //document.getElementById("div-history-button").style.display= "none"
+        historyButton.innerHTML = "Alert"
+        historyButton.style.backgroundColor = "red"
+        historyButton.click()
+    } 
     else {
         login = true
     }
@@ -43,25 +48,25 @@ window.onload = () => {
         else {
             document.getElementById("percentage").innerHTML = 0
         }
+        const message = params.get('message');
         if (message == "first") {
             const topButton = document.querySelector("#historyButton");
             topButton.click();
         }
-        console.log(window.location.pathname)
+
         document.getElementById("a-profile").href = window.location.pathname + "/profile"
         document.getElementById("a-change-password").href = window.location.pathname + "/changePassword"
         document.getElementById("a-report-a-problem").href = window.location.pathname + "/report"
         document.getElementById("a-feedback").href = window.location.pathname + "/feedback"
     }
-    //document.getElementById("name-button").innerHTML = fullName.charAt(0);
     document.getElementById("submitForm").action = window.location.pathname + "/submit"
-
 };
 
 function transition(event) {
     if (event.matches) {
         mobileview = true;
         historySection.style.transform = 'translateX(-100%)';
+        historyButton.click()
     }
     else {
         mobileview = false;
@@ -84,6 +89,10 @@ historyButton.addEventListener('click', () => {
     num++;
 });
 
+function clickHistoryButton() {
+    historyButton.click()
+}
+
 function clearresult() {
     document.getElementById("floatingEmptyPlaintextInput").value = ""
     document.getElementById("submitButton").disabled = false
@@ -102,19 +111,3 @@ function putTextAndResult(text, result) {
 function capitalizeName(name) {
     return name.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
 }
-
-//for hovering name button
-// const nameButton = document.getElementById("name-button");
-// nameButton.addEventListener("mouseenter", () => {
-//     nameButton.innerHTML = fullName;
-// });
-
-// nameButton.addEventListener("mouseleave", () => {
-//     nameButton.innerHTML = fullName.charAt(0);
-// });
-
-
-
-
-
-//background-color:rgb(127, 251, 99)

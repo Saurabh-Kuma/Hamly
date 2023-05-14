@@ -1,0 +1,235 @@
+body {
+	background-color: #e8fdf1;
+}
+
+/* footer All style */
+.fconatiner {
+
+	height: 15vh;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	font-size: 2.5vh;
+	align-items: center;
+	flex-flow: column wrap;
+	background-color: #40AE49;
+
+}
+
+.Copyright {
+	color: white;
+
+	height: 4vh;
+	padding: 1vh 0vh 0vh 0vh
+}
+
+.sicon {
+	color: white;
+
+	height: 4vh;
+	padding: 1vh 0vh 0vh 0vh
+}
+
+.flinks {
+	color: white;
+
+	height: 4vh;
+	padding: 2vh 0vh 3vh 0vh
+}
+
+/* Style all font awesome icons */
+.fa {
+	padding: 7px;
+	font-size: 15px;
+	width: 30px;
+	margin-right: 0px;
+	float: right;
+	text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+	opacity: 0.9;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+	background: #40AE49;
+	color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+	background: #40AE49;
+	color: white;
+}
+
+/* linkedin */
+.fa-linkedin {
+	background: #40AE49;
+	color: white;
+}
+
+/* instagram */
+.fa-instagram {
+	background: #40AE49;
+	color: white;
+}
+
+/* a href style */
+a:any-link {
+	color: white;
+	text-decoration: none;
+
+
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+/* Header all style */
+
+/* All pages headings */
+.fheading {
+	/* height: 8vh; */
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	font-family: Helvetica;
+	flex-flow: column wrap;
+	font-size: 6vh;
+	text-align: center;
+	margin: 1% 0% 0% 0%;
+}
+
+.faboutus {
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	font-family: Helvetica;
+	/* flex-flow: column wrap; */
+	font-size: 3vh;
+	text-align: justify;
+	/* margin: 2%; */
+	/* padding: 0vh 2.5vw 0vh 2.5vw; */
+}
+
+.flogout {
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 1%;
+	flex-flow: column wrap;
+	font-size: 5vh;
+	text-align: center;
+
+
+}
+
+.fprivacy {
+	display: flex;
+	justify-content: right;
+	flex-wrap: wrap;
+	font-family: Helvetica;
+
+	flex-flow: column wrap;
+	font-size: 3vh;
+
+	padding: 0vh 2.5vw 0vh 2.5vw;
+
+}
+
+.change_password {
+
+	display: flex;
+	justify-content: center;
+
+
+	flex-flow: column wrap;
+	align-items: center;
+
+
+}
+
+.btn {
+	align-items: center;
+	width: 15vh;
+	margin-left: 0%;
+	border: 0;
+	color: white;
+
+
+}
+
+/* change password style */
+
+
+/* contact us */
+.fcontactus {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+
+
+
+
+	align-items: center;
+
+
+
+
+	font-family: Helvetica;
+}
+
+.st-box {
+
+	text-align: center;
+	padding: 0vh 5vw 0vh 5vw;
+
+
+
+
+
+}
+
+.nd-box {
+	text-align: center;
+	margin-bottom: 7%;
+	padding: 0vh 5vw 0vh 5vw;
+
+
+
+
+}
+
+.rd-box {
+	margin: 25px;
+	text-align: center;
+	margin-bottom: 7%;
+	padding: 0vh 5vw 0vh 5vw;
+
+
+}
+
+
+
+@media (min-width: 768px) {
+	#div-feedback {
+		width: 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	#div-feedback {
+		width: 95%;
+	}
+}
+
+.green{
+	color:#40AE49
+}
