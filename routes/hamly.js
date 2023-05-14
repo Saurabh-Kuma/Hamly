@@ -273,7 +273,7 @@ router.get('/dashboard/:email', (req, res) => {
 
 router.post('/dashboard/:email/submit', (req, res) => {
     //check email is spam or not and change result element
-    var result = "This is a result"
+    var result = "This Mail is Not Spam"
 
     //this is configuration of database 
     data = {
