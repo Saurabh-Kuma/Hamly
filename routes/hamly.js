@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const safe = require("./safe")
+const safe = require("../safe")
 const router = express.Router()
 const axios = require('axios');
 const {PythonShell} = require('python-shell'); 
