@@ -3,7 +3,7 @@ const path = require('path')
 const safe = require("../safe")
 const router = express.Router()
 const axios = require('axios');
-const {PythonShell} = require('python-shell'); 
+const { PythonShell } = require('python-shell');
 const uri = safe.uri
 var config = safe.config
 var dbinfo = safe.dbinfo
@@ -56,32 +56,32 @@ var data = {}
 
 async function runPython(text) {
     let options = {
-      mode: 'text',
-      pythonPath: "C:/Python311/python.exe",
-      pythonOptions: ['-u'], // get print results in real-time
-      args: [text]
+        mode: 'text',
+        pythonPath: "C:/Python311/python.exe",
+        pythonOptions: ['-u'], // get print results in real-time
+        args: [text]
     };
-  
+
     return new Promise((resolve, reject) => {
-        PythonShell.run('routes/ml.py', options).then(messages=>{
+        PythonShell.run('routes/ml.py', options).then(messages => {
             // results is an array consisting of messages collected during execution
-            console.log('results: : '+ messages)
-            resolve(messages[0]) 
-          });
+            console.log('results: : ' + messages)
+            resolve(messages[0])
+        });
     });
-  } 
+}
 
 
-  router.post('/dashboard/submit', async (req, res) => {
+router.post('/dashboard/submit', async (req, res) => {
     var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
-  
+
     var result = await runPython(text)
     res.redirect('/dashboard?result=' + result + '&&text=' + text)
-  })
-  
- 
+})
 
- 
+
+
+
 // router.post('/dashboard/submit', (req, res) => {
 //     var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
 
