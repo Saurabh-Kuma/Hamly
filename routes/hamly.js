@@ -8,87 +8,41 @@ const uri = safe.uri
 var config = safe.config
 var dbinfo = safe.dbinfo
 var data = {}
-//var result = {}
 
-// let options = {
-//     //mode: 'text',
-//     //pythonPath: "C:/Python311/python.exe",
-//     pythonOptions: ['-u'], // get print results in real-time
-//     args: ["text", "saurabh"]  
-// };
-
-// PythonShell.run('routes/ml.py', options, function (err, results) {
-//     if (err) throw err;
-//     // results is an array consisting of messages collected during execution
-//     console.log('results: %j', results);
-// }); 
-
-// PythonShell.run('routes/ml.py', options).then(messages=>{
-//     // results is an array consisting of messages collected during execution
-//     console.log('results: '+ messages)
-//   });
-
-
-
-// function runPython(text) {
-//     var ans="this is from runPython"
+// async function runPython(text) {
 //     let options = {
 //         mode: 'text',
 //         pythonPath: "C:/Python311/python.exe",
 //         pythonOptions: ['-u'], // get print results in real-time
-//         scriptPath: 'routes',
 //         args: [text]
 //     };
 
-//     PythonShell.run('ml.py', options, function (err, results) {
-//         if (err) throw err;
-//         // results is an array consisting of messages collected during execution
-//         console.log('results: ', err);
-//         ans = results[0];
+//     return new Promise((resolve, reject) => {
+//         PythonShell.run('routes/ml.py', options).then(messages => {
+//             // results is an array consisting of messages collected during execution
+//             console.log('results: : ' + messages)
+//             resolve(messages[0])
+//         });
 //     });
-//     return ans
 // }
 
-// PythonShell.run('routes/ml.py', null).then(messages=>{
-//     console.log('finished' +messages);
-//   });
 
-
-async function runPython(text) {
-    let options = {
-        mode: 'text',
-        pythonPath: "C:/Python311/python.exe",
-        pythonOptions: ['-u'], // get print results in real-time
-        args: [text]
-    };
-
-    return new Promise((resolve, reject) => {
-        PythonShell.run('routes/ml.py', options).then(messages => {
-            // results is an array consisting of messages collected during execution
-            console.log('results: : ' + messages)
-            resolve(messages[0])
-        });
-    });
-}
-
-
-router.post('/dashboard/submit', async (req, res) => {
-    var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
-
-    var result = await runPython(text)
-    res.redirect('/dashboard?result=' + result + '&&text=' + text)
-})
-
-
-
-
-// router.post('/dashboard/submit', (req, res) => {
+// router.post('/dashboard/submit', async (req, res) => {
 //     var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
 
-//     var result = runPython(text)
+//     var result = await runPython(text)
 //     res.redirect('/dashboard?result=' + result + '&&text=' + text)
-
 // })
+
+
+
+
+router.post('/dashboard/submit', (req, res) => {
+    var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
+    var result = "This Mail is Not Spam"
+
+    res.redirect('/dashboard?result=' + result + '&&text=' + text)
+})
 
 
 router.get('/aboutUs', (req, res) => {
