@@ -3,45 +3,76 @@ const path = require('path')
 const safe = require("../safe")
 const router = express.Router()
 const axios = require('axios');
-const { PythonShell } = require('python-shell');
+
 const uri = safe.uri
 var config = safe.config
 var dbinfo = safe.dbinfo
 var data = {}
 
-// async function runPython(text) {
-//     let options = {
-//         mode: 'text',
-//         pythonPath: "C:/Python311/python.exe",
-//         pythonOptions: ['-u'], // get print results in real-time
-//         args: [text]
-//     };
-
-//     return new Promise((resolve, reject) => {
-//         PythonShell.run('routes/ml.py', options).then(messages => {
-//             // results is an array consisting of messages collected during execution
-//             console.log('results: : ' + messages)
-//             resolve(messages[0])
-//         });
-//     });
-// }
-
-
-// router.post('/dashboard/submit', async (req, res) => {
-//     var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
-
-//     var result = await runPython(text)
-//     res.redirect('/dashboard?result=' + result + '&&text=' + text)
-// })
-
-
-
 
 router.post('/dashboard/submit', (req, res) => {
     var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
-    var result = "This Mail is Not Spam"
+    var result
+    axios.post("https://hamlyapi.onrender.com/predict_mail", {
+        "text": text
+    })
+        .then((respo) => {
+            result= respo.data
+            res.redirect('/dashboard?result=' + result + '&&text=' + text)
+        })
 
-    res.redirect('/dashboard?result=' + result + '&&text=' + text)
+})
+
+
+router.post('/dashboard/:email/submit', async (req, res) => {
+    //check email is spam or not and change result element
+    var text= req.body.floatingTextarea2
+    var result
+
+    var respo= await axios.post("https://hamlyapi.onrender.com/predict_mail", {
+        "text": text
+    })
+    result= await respo.data
+    
+    if(result== "This Mail is Spam! Stay Alert"){
+        spamInc ={
+            "$inc": { "spam": 1 }
+        }
+    }
+    else{
+        spamInc={}
+    }
+
+    //this is configuration of database 
+    data = {
+        ...config,
+        url: uri + "/updateOne",
+        data: {
+            ...dbinfo,
+            "filter": {
+                "email": req.params.email
+            },
+            "update": {
+                "$push": {
+                    "history": {
+                        "$each": [{
+                            "text": text.replace(/`/g, "@backtick"),
+                            "result": result
+                        }],
+                        "$position": 0
+                    }
+                },
+                "$inc": { "total": 1 },
+                ...spamInc
+            }
+        }
+    };
+
+    //here we pass config json data to run on database api
+    axios(data)
+        .then((respo) => {
+            res.redirect("/dashboard/" + req.params.email + "?message=first")
+        })
 })
 
 
@@ -263,7 +294,7 @@ router.get('/dashboard/:email', (req, res) => {
                     "email": respo.data.document.email,
                     "name": respo.data.document.firstName + " " + respo.data.document.lastName,
                     "total": respo.data.document.total,
-                    "spam": respo.data.document.sapm
+                    "spam": respo.data.document.spam
                 })
 
             }
@@ -271,40 +302,6 @@ router.get('/dashboard/:email', (req, res) => {
 
 })
 
-router.post('/dashboard/:email/submit', (req, res) => {
-    //check email is spam or not and change result element
-    var result = "This Mail is Not Spam"
-
-    //this is configuration of database 
-    data = {
-        ...config,
-        url: uri + "/updateOne",
-        data: {
-            ...dbinfo,
-            "filter": {
-                "email": req.params.email
-            },
-            "update": {
-                "$push": {
-                    "history": {
-                        "$each": [{
-                            "text": req.body.floatingTextarea2.replace(/`/g, "@backtick"),
-                            "result": result
-                        }],
-                        "$position": 0
-                    }
-                },
-                "$inc": { "total": 1 }
-            }
-        }
-    };
-
-    //here we pass config json data to run on database api
-    axios(data)
-        .then((respo) => {
-            res.redirect("/dashboard/" + req.params.email + "?message=first")
-        })
-})
 
 router.get('/', (req, res) => {
     res.redirect("/dashboard")
