@@ -36,11 +36,15 @@ router.post('/dashboard/:email/submit', async (req, res) => {
     
     if(result== "This Mail is Spam! Stay Alert"){
         spamInc ={
-            "$inc": { "spam": 1 }
+            "$inc": { "total": 1,
+                    "spam": 1
+                    }
         }
-    }
+    } 
     else{
-        spamInc={}
+        spamInc={
+            "$inc": { "total": 1 }
+        }
     }
 
     //this is configuration of database 
@@ -62,7 +66,6 @@ router.post('/dashboard/:email/submit', async (req, res) => {
                         "$position": 0
                     }
                 },
-                "$inc": { "total": 1 },
                 ...spamInc
             }
         }
@@ -329,7 +332,7 @@ router.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/login.html'))
 })
 
-router.post('/login/submit', (req, res) => {
+router.post('/login/submit', (req, res) => { 
     //it holds the data from post method
     let email = req.body.userid
     let password = req.body.pass

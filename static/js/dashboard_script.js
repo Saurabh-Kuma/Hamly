@@ -24,12 +24,8 @@ window.onload = () => {
         document.getElementById("spamp").style.display = "none"
         document.getElementById("percentagep").style.display = "none"
         document.getElementById("navigation-list").style.display = "none"
-        //document.getElementById("div-logo").style.width = "100%";
-        //document.getElementById("div-logo").style.textAlign = "center";
-        //document.getElementById("img-logo").style.marginLeft = "0";
         historySection.style.overflow = "unset"
-        //document.getElementById("div-history-button").style.display= "none"
-        historyButton.innerHTML = "Alert"
+        //historyButton.innerHTML = "Alert"
         historyButton.style.backgroundColor = "red"
         historyButton.click()
     } 
@@ -80,11 +76,18 @@ historyButton.addEventListener('click', () => {
         historySection.style.transform = 'translateX(0)';
         historySection.style.display = 'block';
         historyButton.style.transform = 'translateX(70vw)';
+        historyButton.innerHTML= 'Back'
     }
     else {
         historySection.style.transform = 'translateX(-100%)';
         historySection.style.display = 'none';
         historyButton.style.transform = 'translateX(0)';
+        if(login){
+            historyButton.innerHTML= 'History'
+        }
+        else{
+            historyButton.innerHTML= 'Alert'
+        }
     }
     num++;
 });
