@@ -4,45 +4,65 @@ const safe = require("../safe")
 const router = express.Router()
 const axios = require('axios');
 
+var alreadyWake = false
 const uri = safe.uri
 var config = safe.config
 var dbinfo = safe.dbinfo
 var data = {}
+var flaskapiurl
 
+function wakeFlask() {
+    alreadyWake = true
+    axios.get('https://hamlyapi.onrender.com')
+        .then((respo) => {
+        })
+        .catch((err) => {
+            flaskapiurl = "https://hamlyapi.onrender.com/predict_mail"
+            console.log("server1 activ now")
+        })
+
+    axios.get('https://hamly-api2.onrender.com')
+        .then((respo) => {
+        })
+        .catch((err) => {
+            flaskapiurl = "https://hamly-api2.onrender.com/predict_mail"
+            console.log("server2 activ now")
+        })
+}
 
 router.post('/dashboard/submit', (req, res) => {
     var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
     var result
-    axios.post("https://hamlyapi.onrender.com/predict_mail", {
+    axios.post(flaskapiurl, {
         "text": text
     })
         .then((respo) => {
-            result= respo.data
+            result = respo.data
             res.redirect('/dashboard?result=' + result + '&&text=' + text)
         })
-
 })
 
 
 router.post('/dashboard/:email/submit', async (req, res) => {
     //check email is spam or not and change result element
-    var text= req.body.floatingTextarea2
+    var text = req.body.floatingTextarea2
     var result
 
-    var respo= await axios.post("https://hamlyapi.onrender.com/predict_mail", {
+    var respo = await axios.post(flaskapiurl, {
         "text": text
     })
-    result= await respo.data
-    
-    if(result== "This Mail is Spam! Stay Alert"){
-        spamInc ={
-            "$inc": { "total": 1,
-                    "spam": 1
-                    }
+    result = await respo.data
+
+    if (result == "This Mail is Spam! Stay Alert") {
+        spamInc = {
+            "$inc": {
+                "total": 1,
+                "spam": 1
+            }
         }
-    } 
-    else{
-        spamInc={
+    }
+    else {
+        spamInc = {
             "$inc": { "total": 1 }
         }
     }
@@ -269,6 +289,12 @@ router.get('/dashboard/:email/report', (req, res) => {
 
 router.get('/dashboard', (req, res) => {
     res.render('withoutlogin')
+
+    if (!alreadyWake) {
+        //wake up the server
+        wakeFlask()
+        alreadyWake = true
+    }
 })
 
 
@@ -302,7 +328,11 @@ router.get('/dashboard/:email', (req, res) => {
 
             }
         })
-
+    if (!alreadyWake) {
+        //wake up the server
+        wakeFlask()
+        alreadyWake = true
+    }
 })
 
 
@@ -332,7 +362,7 @@ router.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, '../views/login.html'))
 })
 
-router.post('/login/submit', (req, res) => { 
+router.post('/login/submit', (req, res) => {
     //it holds the data from post method
     let email = req.body.userid
     let password = req.body.pass

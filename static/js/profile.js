@@ -1,21 +1,22 @@
-const firstName= document.getElementById("firstName")
+const firstName = document.getElementById("firstName")
 const lastName = document.getElementById("lastName")
-const email= document.getElementById("email")
+const email = document.getElementById("email")
 const mobileNumber = document.getElementById("mobileNumber")
-const genMale= document.getElementById("genMale")
-const genFemale= document.getElementById("genFemale")
-const genOther= document.getElementById("genOther")
+const genMale = document.getElementById("genMale")
+const genFemale = document.getElementById("genFemale")
+const genOther = document.getElementById("genOther")
 const editButton = document.getElementById("edit-button")
 const updateButton = document.getElementById("update-button")
 // const formProfile= document.getElementById("form-profile")
+const params = new URLSearchParams(window.location.search)
 
-const params= new URLSearchParams(window.location.search)
+//fetching data from database
+getData()
 
-window.onload= ()=>{
-    getData()
+window.onload = () => {
     readOnly()
-    if(params.get("message")=="done"){
-        document.getElementById("msg").innerHTML= "Profile Updated Successfully!"
+    if (params.get("message") == "done") {
+        document.getElementById("msg").innerHTML = "Profile Updated Successfully!"
     }
     // formProfile.action="/dashboard/"+email.value+"/profile/submit"
 }
@@ -25,27 +26,31 @@ window.onload= ()=>{
 //     console.log(formProfile.action)
 // })
 
-function getData() {
-    fetch(window.location.pathname +"/data")
-    .then(response => response.json())
-    .then(data=>{
-        firstName.value= data.firstName
-        lastName.value= data.lastName
-        mobileNumber.value= data.mobile
-        email.value= data.email
-        if(data.gender =="male"){
-            genMale.checked= true
-        }
-        else if(data.gender =="female"){
-            genFemale.checked= true
-        }
-        else{
-            genOther.checked= true
-        }
-    }) 
+function setValues(data) {
+    firstName.value = data.firstName
+    lastName.value = data.lastName
+    mobileNumber.value = data.mobile
+    email.value = data.email
+    if (data.gender == "male") {
+        genMale.checked = true
+    }
+    else if (data.gender == "female") {
+        genFemale.checked = true
+    }
+    else {
+        genOther.checked = true
+    }
 }
 
-function readOnly(){
+function getData() {
+    fetch(window.location.pathname + "/data")
+        .then(response => response.json())
+        .then(data => {
+            setValues(data)
+        })
+}
+
+function readOnly() {
     updateButton.setAttribute("disabled", true)
     firstName.setAttribute("readonly", true)
     lastName.setAttribute("readonly", true)
@@ -56,7 +61,7 @@ function readOnly(){
     genOther.setAttribute("disabled", true)
 }
 
-function readAndWrite(){
+function readAndWrite() {
     editButton.setAttribute("disabled", true)
     updateButton.removeAttribute("disabled")
     firstName.removeAttribute("readonly")
@@ -66,7 +71,7 @@ function readAndWrite(){
     genMale.removeAttribute("disabled")
     genFemale.removeAttribute("disabled")
     genOther.removeAttribute("disabled")
-    document.getElementById("msg").innerHTML=""
+    document.getElementById("msg").innerHTML = ""
 }
 
 function onlyAlphabets(e, t) {

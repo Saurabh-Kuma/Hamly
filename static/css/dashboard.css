@@ -17,6 +17,10 @@ html {
         display: none;
     }
 
+    #a-closebtn {
+        display: none;
+    }
+
     #remind-button{
         display : none;
     }
@@ -30,9 +34,9 @@ html {
         width: 70vw;
     }
 
-    #history-button {
+    /* #history-button {
         transform: translateX(0);
-    }
+    } */
 
     #analatics-div {
         display: none;

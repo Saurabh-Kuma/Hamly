@@ -1,18 +1,22 @@
 const historyButton = document.querySelector('#history-button');
 const historySection = document.querySelector('#history-section');
+const closeButton= document.getElementById('a-closebtn')
 var media = window.matchMedia('(max-width: 650px)');
 media.addEventListener('change', transition)
 var fullName;
 var num = 0;
-var mobileview
+var mobileview= false
+if (window.outerWidth< 650){
+    mobileview=true
+}
 var login
 window.onload = () => {
     const params = new URLSearchParams(window.location.search)
     if (window.location.pathname == "/dashboard") {
         login = false
-        var result= params.get('result')
-        var text= params.get('text')
-        if(result!= null){
+        var result = params.get('result')
+        var text = params.get('text')
+        if (result != null) {
             document.getElementById("floatingTextarea2").value = text.replace(/@backtick/g, "`")
             document.getElementById("floatingEmptyPlaintextInput").value = "Result: " + result
             document.getElementById("submitButton").disabled = true
@@ -25,10 +29,14 @@ window.onload = () => {
         document.getElementById("percentagep").style.display = "none"
         document.getElementById("navigation-list").style.display = "none"
         historySection.style.overflow = "unset"
-        //historyButton.innerHTML = "Alert"
+        historyButton.innerHTML = 'Alert'
         historyButton.style.backgroundColor = "red"
-        historyButton.click()
-    } 
+        if (window.outerWidth< 650){
+            mobileview=true;
+            clickHistoryButton()
+        }
+            
+    }
     else {
         login = true
     }
@@ -49,6 +57,9 @@ window.onload = () => {
             const topButton = document.querySelector("#historyButton");
             topButton.click();
         }
+        else{
+            closeButton.style.display = 'none';
+        }
 
         document.getElementById("a-profile").href = window.location.pathname + "/profile"
         document.getElementById("a-change-password").href = window.location.pathname + "/changePassword"
@@ -62,38 +73,32 @@ function transition(event) {
     if (event.matches) {
         mobileview = true;
         historySection.style.transform = 'translateX(-100%)';
-        historyButton.click()
+        clickHistoryButton()
     }
     else {
         mobileview = false;
         historySection.style.display = 'block';
         historySection.style.transform = 'translateX(0)';
+        closeButton.style.display="none"
     }
 }
 
-historyButton.addEventListener('click', () => {
-    if (num % 2 == 0) {
-        historySection.style.transform = 'translateX(0)';
-        historySection.style.display = 'block';
-        historyButton.style.transform = 'translateX(70vw)';
-        historyButton.innerHTML= 'Back'
-    }
-    else {
+function  clickHistoryClose(){
         historySection.style.transform = 'translateX(-100%)';
         historySection.style.display = 'none';
-        historyButton.style.transform = 'translateX(0)';
-        if(login){
-            historyButton.innerHTML= 'History'
+        closeButton.style.display = 'none';
+        if (login) {
+            historyButton.innerHTML = 'History'
         }
-        else{
-            historyButton.innerHTML= 'Alert'
+        else {
+            historyButton.innerHTML = 'Alert'
         }
-    }
-    num++;
-});
+}
 
 function clickHistoryButton() {
-    historyButton.click()
+    historySection.style.transform = 'translateX(0)';
+    historySection.style.display = 'block';
+    closeButton.style.display = 'block';
 }
 
 function clearresult() {
@@ -107,7 +112,7 @@ function putTextAndResult(text, result) {
     document.getElementById("floatingEmptyPlaintextInput").value = "Result: " + result
     document.getElementById("submitButton").disabled = true
     if (mobileview) {
-        historyButton.click()
+        clickHistoryClose()
     }
 }
 
