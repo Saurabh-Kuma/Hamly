@@ -9,17 +9,17 @@ const uri = safe.uri
 var config = safe.config
 var dbinfo = safe.dbinfo
 var data = {}
-var flaskapiurl
+var flaskapiurl='https://hamly-api2.onrender.com/predict_mail'
 
 function wakeFlask() {
     alreadyWake = true
-    axios.get('https://hamlyapi.onrender.com')
-        .then((respo) => {
-        })
-        .catch((err) => {
-            flaskapiurl = "https://hamlyapi.onrender.com/predict_mail"
-            console.log("server1 activ now")
-        })
+    // axios.get('https://hamlyapi.onrender.com')
+    //     .then((respo) => {
+    //     })
+    //     .catch((err) => {
+    //         flaskapiurl = "https://hamlyapi.onrender.com/predict_mail"
+    //         console.log("server1 activ now")
+    //     })
 
     axios.get('https://hamly-api2.onrender.com')
         .then((respo) => {
