@@ -21,5 +21,6 @@ app.use("/", require(path.join(__dirname, "routes/hamly.js")))
 
 //it stats app form here
 app.listen(port, () => { 
-  console.log(`Hamly app listening on http://localhost:${port}`)
-})
+  console.log(`Hamly app listening`)
+}) 
+ 

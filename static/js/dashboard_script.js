@@ -1,15 +1,16 @@
 const historyButton = document.querySelector('#history-button');
 const historySection = document.querySelector('#history-section');
-const closeButton= document.getElementById('a-closebtn')
+const closeButton = document.getElementById('a-closebtn')
 var media = window.matchMedia('(max-width: 650px)');
 media.addEventListener('change', transition)
 var fullName;
 var num = 0;
-var mobileview= false
-if (window.outerWidth< 650){
-    mobileview=true
+var mobileview = false
+if (window.outerWidth < 650) {
+    mobileview = true
 }
 var login
+
 window.onload = () => {
     const params = new URLSearchParams(window.location.search)
     if (window.location.pathname == "/dashboard") {
@@ -21,24 +22,22 @@ window.onload = () => {
             document.getElementById("floatingEmptyPlaintextInput").value = "Result: " + result
             document.getElementById("submitButton").disabled = true
         }
-        document.getElementById("total").style.display = "none"
-        document.getElementById("spam").style.display = "none"
-        document.getElementById("percentage").style.display = "none"
-        document.getElementById("totalp").style.display = "none"
-        document.getElementById("spamp").style.display = "none"
-        document.getElementById("percentagep").style.display = "none"
-        document.getElementById("navigation-list").style.display = "none"
         historySection.style.overflow = "unset"
         historyButton.innerHTML = 'Alert'
         historyButton.style.backgroundColor = "red"
-        if (window.outerWidth< 650){
-            mobileview=true;
+        if (mobileview) {
             clickHistoryButton()
         }
-            
     }
     else {
         login = true
+        document.getElementById("totalp").style.display = "block"
+        document.getElementById("spamp").style.display = "block"
+        document.getElementById("percentagep").style.display = "block"
+        document.getElementById("total").style.display = "block"
+        document.getElementById("spam").style.display = "block"
+        document.getElementById("percentage").style.display = "block"
+        document.getElementById("navigation-list").style.display = "block"
     }
     if (login) {
         const hiddenData = document.getElementById("hidden").value
@@ -57,8 +56,8 @@ window.onload = () => {
             const topButton = document.querySelector("#historyButton");
             topButton.click();
         }
-        else{
-            closeButton.style.display = 'none';
+        else {
+            closeButton.style.display = 'none'; 
         }
 
         document.getElementById("a-profile").href = window.location.pathname + "/profile"
@@ -79,20 +78,20 @@ function transition(event) {
         mobileview = false;
         historySection.style.display = 'block';
         historySection.style.transform = 'translateX(0)';
-        closeButton.style.display="none"
+        closeButton.style.display = "none"
     }
 }
 
-function  clickHistoryClose(){
-        historySection.style.transform = 'translateX(-100%)';
-        historySection.style.display = 'none';
-        closeButton.style.display = 'none';
-        if (login) {
-            historyButton.innerHTML = 'History'
-        }
-        else {
-            historyButton.innerHTML = 'Alert'
-        }
+function clickHistoryClose() {
+    historySection.style.transform = 'translateX(-100%)';
+    historySection.style.display = 'none';
+    closeButton.style.display = 'none';
+    if (login) {
+        historyButton.innerHTML = 'History'
+    }
+    else {
+        historyButton.innerHTML = 'Alert'
+    }
 }
 
 function clickHistoryButton() {
