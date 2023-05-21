@@ -387,13 +387,13 @@ router.post('/login/submit', (req, res) => {
     //this function is used for validate user
     function check(result) {
         if (result.document == null) {
-            res.redirect("/login?message=invalid%20email")
+            res.redirect("/login?message=invalid email")
         }
         else if (result.document.password == password) {
             res.redirect("/dashboard/" + result.document.email)
         }
         else {
-            res.redirect("/login?message=invalid%20password")
+            res.redirect("/login?message=invalid password")
         }
     }
 })
@@ -406,16 +406,16 @@ router.post('/signup/submit', (req, res) => {
         "mobile": req.body.mobileNumber,
         "gender": req.body.gen,
         "email": req.body.email,
-        "password": req.body.pass,
-        "total": 0,
+        "password": req.body.pass, 
+        "total": 0, 
         "spam": 0,
         "history": [],
         "feedback": [],
         "report": []
-    }
+    } 
     //this is configuration of database
     data = {
-        ...config,
+        ...config, 
         url: uri + "/findOne",
         data: {
             ...dbinfo,

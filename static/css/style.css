@@ -2,8 +2,12 @@ body {
 	background-color: #e8fdf1;
 }
 
+html {
+	font-size: 2vh;
+}
+
 /* footer All style */
-.fconatiner {
+/* .fconatiner {
 
 	height: 15vh;
 	display: flex;
@@ -14,28 +18,28 @@ body {
 	flex-flow: column wrap;
 	background-color: #40AE49;
 
-}
+} */
 
-.Copyright {
+/* .Copyright {
 	color: white;
 
 	height: 4vh;
 	padding: 1vh 0vh 0vh 0vh
-}
+} */
 
-.sicon {
+/* .sicon {
 	color: white;
 
 	height: 4vh;
 	padding: 1vh 0vh 0vh 0vh
-}
+} */
 
-.flinks {
+/* .flinks {
 	color: white;
 
 	height: 4vh;
 	padding: 2vh 0vh 3vh 0vh
-}
+} */
 
 /* Style all font awesome icons */
 .fa {
@@ -82,13 +86,11 @@ body {
 a:any-link {
 	color: white;
 	text-decoration: none;
-
-
 }
 
-a:hover {
+/* a:hover {
 	text-decoration: underline;
-}
+} */
 
 /* Header all style */
 
@@ -118,7 +120,7 @@ a:hover {
 	/* padding: 0vh 2.5vw 0vh 2.5vw; */
 }
 
-.flogout {
+/* .flogout {
 
 	display: flex;
 	justify-content: center;
@@ -127,9 +129,7 @@ a:hover {
 	flex-flow: column wrap;
 	font-size: 5vh;
 	text-align: center;
-
-
-}
+} */
 
 .fprivacy {
 	display: flex;
@@ -144,26 +144,20 @@ a:hover {
 
 }
 
-.change_password {
-
+/* .change_password {
 	display: flex;
 	justify-content: center;
-
-
 	flex-flow: column wrap;
 	align-items: center;
-
-
-}
+} */
 
 .btn {
-	align-items: center;
-	width: 15vh;
-	margin-left: 0%;
+	min-width: 8vw;
+	padding-top: 1vw;
+	padding-bottom: 1vw;
 	border: 0;
 	color: white;
-
-
+	border-radius: 5rem;
 }
 
 /* change password style */
@@ -174,15 +168,7 @@ a:hover {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-
-
-
-
 	align-items: center;
-
-
-
-
 	font-family: Helvetica;
 }
 
@@ -190,21 +176,12 @@ a:hover {
 
 	text-align: center;
 	padding: 0vh 5vw 0vh 5vw;
-
-
-
-
-
 }
 
 .nd-box {
 	text-align: center;
 	margin-bottom: 7%;
 	padding: 0vh 5vw 0vh 5vw;
-
-
-
-
 }
 
 .rd-box {
@@ -212,8 +189,12 @@ a:hover {
 	text-align: center;
 	margin-bottom: 7%;
 	padding: 0vh 5vw 0vh 5vw;
+}
 
 
+
+.green{
+	color:#40AE49
 }
 
 
@@ -228,8 +209,4 @@ a:hover {
 	#div-feedback {
 		width: 95%;
 	}
-}
-
-.green{
-	color:#40AE49
 }

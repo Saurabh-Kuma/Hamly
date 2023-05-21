@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%;">
+<html lang="en" style="height: 100%; font-size: 2vh;">
 
 <head>
     <meta charset="UTF-8">
@@ -50,26 +50,26 @@
             <!-- class="col-md-6" -->
             <div id="div-login" style="height:80%; border:0.8vh solid #40AE49; border-radius:5vh; margin-top: 2vh; margin-bottom: 0vh;">
                 <form action="/login/submit" method="post"
-                    style=" height: 70%; padding: 3vh 2.5vw 2.5vh 2.5vw;">
-                    <div class="mb-3" >
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    style=" height: 80%; padding: 3vh 2.5vw 2.5vh 2.5vw;">
+                    <div style="margin-bottom:3vh" >
+                        <label for="exampleFormControlInput1" style="margin-bottom: 1vh;">Email address</label>
                         <input type="email" class="form-control" name="userid" id="exampleFormControlInput1"
                             placeholder="name@example.com">
                     </div>
-                    <label for="inputPassword5"  class="form-label">Password</label>
+                    <label for="inputPassword5" style="margin-bottom: 1vh;">Password</label>
                     <!--  -->
                     <input type="password" name="pass" id="inputPassword5" class="form-control" aria-labelledby="passwordHelpBlock">
                     
                     <!-- class="form-group col-sm-12" -->
-                    <div  style="margin-top: 3%; text-align: center;">
-                        <label id="emailmsg" disabled style="font-size: 2vh; color:red; font-weight: 600;"></label><br><br>
+                    <div  style="margin-top: 3vh; text-align: center;">
+                        <label id="emailmsg" disabled style="font-size: 2vh; margin-bottom: 2vh; color:red; font-weight: 600;"></label><br>
                         <button type="submit" class="btn" style="width: 15vh; background-color: #40AE49; border: 0; color: white;"
                             id="btnSubmit">Login</button>
                         <button type="reset" class="btn btn-secondary" style="width: 15vh; margin-left: 3vh; border: 0;"
                             id="Rest">Reset</button>
                     </div>
                     <div style="text-align: center; padding-top: 5vh;">
-                        <hr style="height:2px; border-width:0; color:gray; background-color:gray">
+                        <hr style="height:2px; border-width:0; color:gray; background-color:gray; margin: 2vh 1vw">
                         <h5>Create New Account
                             <a href="/signup" style="text-decoration: none; color:#40AE49"> Signup </a>
                         </h5>

@@ -1,4 +1,7 @@
 const label= document.getElementById('emailmsg')
+const mobile= document.getElementById('mobileNumber')
+var digit
+
 const params= new URLSearchParams(window.location.search)
 const message=params.get('message');
 if(message!=null)
@@ -45,5 +48,16 @@ function onlyAlphabets(e, t) {
     }
     catch (err) {
         alert(err.Description);
+    }
+}
+
+
+function checkNumber(){
+    digit = mobile.value.length
+    if(digit == 10){
+        label.textContent=""
+    }
+    else{
+        label.textContent="* Mobile Number Should contain 10 digit!"
     }
 }

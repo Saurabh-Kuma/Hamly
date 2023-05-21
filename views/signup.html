@@ -20,14 +20,6 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
 </head>
 
 <body style="font-family: Helvetica; background-color: #e8fdf1;">
@@ -76,7 +68,7 @@
                             <label> Mobile Number : </label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="number" onkeypress="if (this.value.length==10) return false" id="mobileNumber"
+                            <input type="number" oninput="checkNumber()" id="mobileNumber"
                                 name="mobileNumber" required placeholder="Enter Your Mobile Number " class="form-control" />
                         </div>
                     </div>
