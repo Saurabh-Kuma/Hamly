@@ -7,6 +7,9 @@ const genFemale = document.getElementById("genFemale")
 const genOther = document.getElementById("genOther")
 const editButton = document.getElementById("edit-button")
 const updateButton = document.getElementById("update-button")
+const label= document.getElementById("msg")
+var digit
+var allowed
 // const formProfile= document.getElementById("form-profile")
 const params = new URLSearchParams(window.location.search)
 
@@ -16,9 +19,8 @@ getData()
 window.onload = () => {
     readOnly()
     if (params.get("message") == "done") {
-        document.getElementById("msg").innerHTML = "Profile Updated Successfully!"
+        label.innerHTML = "Profile Updated Successfully!"
     }
-    // formProfile.action="/dashboard/"+email.value+"/profile/submit"
 }
 
 // email.addEventListener("blur", ()=>{
@@ -71,7 +73,7 @@ function readAndWrite() {
     genMale.removeAttribute("disabled")
     genFemale.removeAttribute("disabled")
     genOther.removeAttribute("disabled")
-    document.getElementById("msg").innerHTML = ""
+    label.innerHTML = ""
 }
 
 function onlyAlphabets(e, t) {
@@ -94,3 +96,16 @@ function onlyAlphabets(e, t) {
         alert(err.Description);
     }
 }
+
+function checkNumber(){
+    digit = mobileNumber.value.length
+    if(digit == 10){
+        label.textContent=""
+        updateButton.removeAttribute("disabled")
+    }
+    else{
+        label.innerHTML="* Mobile Number Should contain 10 digit!"
+        updateButton.setAttribute("disabled", true)
+    }
+}
+

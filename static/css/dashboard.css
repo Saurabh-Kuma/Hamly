@@ -3,7 +3,7 @@ html {
 }
 
 .fx-1 {
-    font-size: 2vw;
+    font-size: 1.6rem;
     font-family: Helvetica;
 }
 
@@ -34,11 +34,16 @@ html {
         width: 70vw;
     }
 
-    /* #history-button {
-        transform: translateX(0);
-    } */
+    #a-closebtn {
+        display: none;
+    }
 
     #analatics-div {
         display: none;
     }
 }
+
+#history-section{
+    padding-right: 2px;
+}
+

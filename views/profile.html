@@ -81,7 +81,7 @@
                             <label> Mobile Number : </label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="number" onkeypress="if (this.value.length==10) return false" id="mobileNumber"
+                            <input type="number" oninput="checkNumber()" id="mobileNumber"
                                 name="mobileNumber" required placeholder="Enter Your Mobile Number "
                                 class="form-control" />
                         </div>
@@ -129,8 +129,7 @@
                         <center>
                             <label id="msg" style="font-size: 2vh; color:red"></label><br>
                             <button onclick="readAndWrite()" class="btn" id="edit-button"
-                                style="width: 15vh; background-color: #40AE49; border: 0; color: white;"
-                                id="btnSubmit">Edit</button>
+                                style="width: 15vh; background-color: #40AE49; border: 0; color: white;">Edit</button>
                             <button type="submit" class="btn" id="update-button"
                                 style="width: 15vh; margin-left: 3vh; background-color: #40AE49; border: 0; color: white;"
                                 id="btnSubmit">Update</button>

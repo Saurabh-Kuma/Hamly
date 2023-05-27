@@ -1,5 +1,6 @@
 const label= document.getElementById('emailmsg')
 const mobile= document.getElementById('mobileNumber')
+const submit= document.getElementById("btnSubmit");
 var digit
 
 const params= new URLSearchParams(window.location.search)
@@ -14,8 +15,6 @@ function isSecure(){
     if(length<6 || length>16){
         pass.value="";
         label.textContent="* password Should be between 6 to 16 letters"
-        //alert("password Should be between 6 to 16 letters");
-         
     }
 } 
   
@@ -56,8 +55,10 @@ function checkNumber(){
     digit = mobile.value.length
     if(digit == 10){
         label.textContent=""
+        submit.removeAttribute("disabled")
     }
     else{
         label.textContent="* Mobile Number Should contain 10 digit!"
+        submit.setAttribute("disabled", true)
     }
 }

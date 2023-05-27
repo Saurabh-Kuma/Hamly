@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scrollbar">
 
 <head>
   <!--a href="https://www.freepik.com/free-photo/portrait-young-handsome-man-posing_12976199.htm#query=black%20man%20face&position=12&from_view=keyword&track=robertav1_2_sidr">Freepik</a-->
@@ -26,17 +26,18 @@
     <div id="div-form" style="position: relative; display: flex; flex-direction: row; width: 100%; height: 85%; ">
       <!-- float:left; -->
       <div id="history-section" class="p-3.bg-gradient"
-        style=" top: 0; z-index: 2; transition: transform 0.3s ease-in-out; background-color:#e8fdf1; color: black; height:100%; text-align:center; overflow-y:auto; overflow-x:hidden;">
+        style=" top: 0; z-index: 2; transition: transform 0.3s ease-in-out; background-color:#e8fdf1; color: black; height:100%; text-align:center;">
+        <div class="scrollbar" style="height:100%;">
 
-
-        {{{body}}}
+          {{{body}}}
+        </div>
       </div>
       <div
         style="flex-grow: 1; position: relative; z-index: 1; background-color:rgb(232, 253, 241);  width: 60%; height: 100%;">
         <div id="div-history-button" style="height: 6%; margin: 1% 2% 1% 2%; display:flex; justify-content:space-between;">
           <button id="history-button" onclick="clickHistoryButton()" class="btn btn-primary"
             style="font-size: 2.1vh; border-radius: 1em; background-color:#40AE49; border: 0; min-width:9vh;">History</button>
-          <a onclick="clickHistoryClose()" id="a-closebtn" style="margin-right: 15vw; display:none;">
+          <a onclick="clickHistoryClose()" id="a-closebtn" style="margin-right: 15vw;">
             <img src="/image/icons/close-square.png" style="height:5vh;">
           </a>
         </div>
@@ -58,14 +59,15 @@
           </div>
         </form>
       </div>
-      <div id="analatics-div" class="p-3.bg-gradient"
-        style=" height: 100%; width: 20%; text-align: center; background-color:rgb(232, 253, 241); color: black; padding-top:5vh">
+      <div id="analatics-div" class="p-3.bg-gradient scrollbar"
+        style=" height: 100%; width: 20%; text-align: center; background-color:rgb(232, 253, 241); color: black; padding: 5vh 0.2rem 0vh 0.2rem;">
         <p id="totalp" class="fx-1 green" style="display: none;">Number of Emails Checked</p>
-        <p id="total" class="fx-1 green" style="display: none;"></p><br>
+        <p id="total" class="fx-1 green" style="display: none;"></p>
         <p id="spamp" class="fx-1 green" style="display: none;">Number of Spam Emails</p>
-        <p id="spam" class="fx-1 green" style="display: none;"></p><br>
+        <p id="spam" class="fx-1 green" style="display: none;"></p>
         <p id="percentagep" class="fx-1 green" style="display: none;">Percent Vulnerability</p>
         <p id="percentage" class="fx-1 green" style="display: none;"></p><br>
+        <p id="recommendation" class="fx-1 green" style="display: none;"></p>
 
       </div>
     </div>
