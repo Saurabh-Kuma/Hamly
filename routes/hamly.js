@@ -13,15 +13,6 @@ var flaskapiurl = 'https://hamly-api2.onrender.com/predict_mail'
 
 function wakeFlask() {
     alreadyWake = true
-    // axios.get('https://hamlyapi.onrender.com')
-    //     .then((respo) => {
-    //            flaskapiurl = "https://hamlyapi.onrender.com/predict_mail"
-    //          console.log("server1 activ now")
-    //     })
-    //     .catch((err) => {
-
-    //     })
-
     axios.get('https://hamly-api2.onrender.com')
         .then((respo) => {
             flaskapiurl = "https://hamly-api2.onrender.com/predict_mail"

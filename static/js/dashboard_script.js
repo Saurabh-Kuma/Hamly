@@ -7,7 +7,7 @@ media.addEventListener('change', transition)
 var fullName;
 var num = 0;
 var mobileview = false
-var vulnerability 
+var vulnerability
 var textrecommendation
 console.log(window.outerWidth+ "first" + mobileview)
 if (window.outerWidth < 650) {
@@ -64,17 +64,21 @@ window.onload = () => {
             document.getElementById("percentage").innerHTML = 0
         }
 
-        if(vulnerability < 10){
+        if(Number(array[1]) == 0){
+            //do nothing
+            textrecommendation= ""
+        }
+        else if(vulnerability < 10){
             textrecommendation= "You are Safe on your email server"
         }
         else if(vulnerability < 20){
             textrecommendation= "You're being Attacked by Spammers"
         }
         else if(vulnerability < 40){
-            textrecommendation= "Stay Cautious! We Recommend You not to take Action Any Action mentioned in email."
+            textrecommendation= "Stay Cautious! We Recommend You not to take Any Action mentioned in email"
         }
         else{
-            textrecommendation="You are at Risk of being theft/Cheated. We strictly Recommend You not to take Action Any Action mentioned in email."
+            textrecommendation="You are at risk of being Theft/Cheated. We strictly recommend you not to take any Action mentioned in email"
         }
 
         recommendation.innerHTML= textrecommendation
