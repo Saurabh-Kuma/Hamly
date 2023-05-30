@@ -1,15 +1,30 @@
 const express = require('express')
 const path = require('path')
-const safe = require("../safe")
 const router = express.Router()
 const axios = require('axios');
+const env = require("dotenv").config()
 
 var alreadyWake = false
-const uri = safe.uri
-var config = safe.config
-var dbinfo = safe.dbinfo
+const uri = process.env.uri
+const apiKey= process.env.apiKey
 var data = {}
 var flaskapiurl = 'https://hamly-api2.onrender.com/predict_mail'
+
+var config = {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Request-Headers': '*',
+      'api-key': apiKey,
+    }
+};  
+
+var dbinfo={
+    "collection": "users",
+    "database": "dbapp",
+    "dataSource": "Cluster"
+}
+
 
 function wakeFlask() {
     alreadyWake = true
