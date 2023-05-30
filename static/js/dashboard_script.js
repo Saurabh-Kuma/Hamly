@@ -1,6 +1,7 @@
 const historyButton = document.querySelector('#history-button');
 const historySection = document.querySelector('#history-section');
 const closeButton = document.getElementById('a-closebtn')
+const closeImg = document.getElementById("closeimg")
 const recommendation = document.getElementById("recommendation")
 var media = window.matchMedia('(max-width: 650px)');
 media.addEventListener('change', transition)
@@ -9,8 +10,8 @@ var num = 0;
 var mobileview = false
 var vulnerability
 var textrecommendation
-console.log(window.outerWidth+ "first" + mobileview)
-if (window.outerWidth < 650) {
+var imgDisplay = window.getComputedStyle(closeImg).getPropertyValue("display")
+if (imgDisplay == 'none') {
     mobileview = true
 }
 var login
@@ -22,25 +23,27 @@ window.onload = () => {
         var result = params.get('result')
         var text = params.get('text')
         if (result != null) {
-            document.getElementById("floatingTextarea2").value = text.replace(/@backtick/g, "`")
-            document.getElementById("floatingEmptyPlaintextInput").value = "Result: " + result
-            document.getElementById("submitButton").disabled = true
+            if (text != null) {
+                document.getElementById("floatingTextarea2").value = text.replace(/@backtick/g, "`")
+                document.getElementById("floatingEmptyPlaintextInput").value = "Result: " + result
+                document.getElementById("submitButton").disabled = true
+            }
+            else {
+                document.getElementById("floatingEmptyPlaintextInput").value = "The text is null can't Find result! Please Reload the Page"
+            }
         }
         historySection.style.overflow = "unset"
         historyButton.innerHTML = 'Alert'
         historyButton.style.backgroundColor = "red"
-        console.log(window.outerWidth+ "Second" + mobileview)
-        if (window.outerWidth < 650) {
-            mobileview= true
+        if (mobileview) {
             clickHistoryButton()
         }
-        else{
-            mobileview=false
+        else {
+            mobileview = false
         }
     }
     else {
         login = true
-        // closeButton.style.display = 'none';
         document.getElementById("totalp").style.display = "block"
         document.getElementById("spamp").style.display = "block"
         document.getElementById("percentagep").style.display = "block"
@@ -57,31 +60,31 @@ window.onload = () => {
         document.getElementById("total").innerHTML = Number(array[1])
         document.getElementById("spam").innerHTML = Number(array[2])
         if (array[1] != "0") {
-            vulnerability= parseFloat((Number(array[2]) * 100) / Number(array[1])).toFixed(2)
+            vulnerability = parseFloat((Number(array[2]) * 100) / Number(array[1])).toFixed(2)
             document.getElementById("percentage").innerHTML = vulnerability
         }
         else {
             document.getElementById("percentage").innerHTML = 0
         }
 
-        if(Number(array[1]) == 0){
+        if (Number(array[1]) == 0) {
             //do nothing
-            textrecommendation= ""
+            textrecommendation = ""
         }
-        else if(vulnerability < 10){
-            textrecommendation= "You are Safe on your email server"
+        else if (vulnerability < 10) {
+            textrecommendation = "You are Safe on your email server"
         }
-        else if(vulnerability < 20){
-            textrecommendation= "You're being Attacked by Spammers"
+        else if (vulnerability < 20) {
+            textrecommendation = "You're being Attacked by Spammers"
         }
-        else if(vulnerability < 40){
-            textrecommendation= "Stay Cautious! We Recommend You not to take Any Action mentioned in email"
+        else if (vulnerability < 40) {
+            textrecommendation = "Stay Cautious! We Recommend You not to take Any Action mentioned in email"
         }
-        else{
-            textrecommendation="You are at risk of being Theft/Cheated. We strictly recommend you not to take any Action mentioned in email"
+        else {
+            textrecommendation = "You are at risk of being Theft/Cheated. We strictly recommend you not to take any Action mentioned in email"
         }
 
-        recommendation.innerHTML= textrecommendation
+        recommendation.innerHTML = textrecommendation
 
         const message = params.get('message');
         if (message == "first") {
@@ -104,7 +107,6 @@ function transition(event) {
     if (event.matches) {
         mobileview = true;
         historySection.style.transform = 'translateX(-100%)';
-        console.log("media")
         clickHistoryButton()
 
     }
@@ -131,9 +133,8 @@ function clickHistoryClose() {
 function clickHistoryButton() {
     historySection.style.transform = 'translateX(0)';
     historySection.style.display = 'block';
-    if (window.outerWidth < 650) {
-        closeButton.style.display = 'block';
-    }
+    closeButton.style.display = 'block';
+
 }
 
 function clearresult() {
@@ -143,9 +144,14 @@ function clearresult() {
 }
 
 function putTextAndResult(text, result) {
-    document.getElementById("floatingTextarea2").value = text.replace(/@backtick/g, "`")
-    document.getElementById("floatingEmptyPlaintextInput").value = "Result: " + result
-    document.getElementById("submitButton").disabled = true
+    if (text != null) {
+        document.getElementById("floatingTextarea2").value = text.replace(/@backtick/g, "`")
+        document.getElementById("floatingEmptyPlaintextInput").value = "Result: " + result
+        document.getElementById("submitButton").disabled = true
+    }
+    else {
+        document.getElementById("floatingEmptyPlaintextInput").value = "The text is null can't Find result! Please Reload the Page"
+    }
     if (mobileview) {
         clickHistoryClose()
     }

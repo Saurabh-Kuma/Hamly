@@ -15,6 +15,11 @@ html {
 
     #history-button {
         display: none;
+        pointer-events: none;
+    }
+
+    #closeimg{
+        display: none;
     }
 
     #a-closebtn {
@@ -24,6 +29,8 @@ html {
     #remind-button{
         display : none;
     }
+
+
 }
 
 @media (max-width: 650px) {
