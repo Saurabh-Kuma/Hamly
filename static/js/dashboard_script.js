@@ -10,10 +10,11 @@ var num = 0;
 var mobileview = false
 var vulnerability
 var textrecommendation
-var imgDisplay = window.getComputedStyle(closeImg).getPropertyValue("display")
+var imgDisplay = window.getComputedStyle(historySection).getPropertyValue("display")
 if (imgDisplay == 'none') {
     mobileview = true
 }
+console.log(mobileview)
 var login
 
 window.onload = () => {
