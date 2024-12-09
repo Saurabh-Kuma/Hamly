@@ -8,7 +8,7 @@ var alreadyWake = false
 const uri = process.env.uri
 const apiKey= process.env.apiKey
 var data = {}
-var flaskapiurl = 'https://hamly-api2.onrender.com/predict_mail'
+var flaskapiurl = 'https://hamlyapi-production.up.railway.app/predict_mail'
 
 var config = {
     method: 'post',
