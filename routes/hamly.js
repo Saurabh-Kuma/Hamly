@@ -4,7 +4,7 @@ const router = express.Router()
 const axios = require('axios');
 const env = require("dotenv").config()
 
-var alreadyWake = false
+// var alreadyWake = false
 const uri = process.env.uri
 const apiKey= process.env.apiKey
 var data = {}
@@ -26,17 +26,17 @@ var dbinfo={
 }
 
 
-function wakeFlask() {
-    alreadyWake = true
-    axios.get('https://hamly-api2.onrender.com')
-        .then((respo) => {
-            flaskapiurl = "https://hamly-api2.onrender.com/predict_mail"
-            console.log(respo.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-}
+// function wakeFlask() {
+//     alreadyWake = true
+//     axios.get('https://hamlyapi-production.up.railway.app')
+//         .then((respo) => {
+//             flaskapiurl = "https://hamlyapi-production.up.railway.app/predict_mail"
+//             console.log(respo.data)
+//         })
+//         .catch((err) => {
+//             console.log(err)
+//         })
+// }
 
 router.post('/dashboard/submit', (req, res) => {
     var text = req.body.floatingTextarea2.replace(/`/g, "@backtick")
@@ -298,11 +298,11 @@ router.get('/dashboard/:email/report', (req, res) => {
 router.get('/dashboard', (req, res) => {
     res.render('withoutlogin')
 
-    if (!alreadyWake) {
-        //wake up the server
-        wakeFlask()
-        alreadyWake = true
-    }
+    // if (!alreadyWake) {
+    //     //wake up the server
+    //     wakeFlask()
+    //     alreadyWake = true
+    // }
 })
 
 
@@ -336,11 +336,11 @@ router.get('/dashboard/:email', (req, res) => {
 
             }
         })
-    if (!alreadyWake) {
-        //wake up the server
-        wakeFlask()
-        alreadyWake = true
-    }
+    // if (!alreadyWake) {
+    //     //wake up the server
+    //     wakeFlask()
+    //     alreadyWake = true
+    // }
 })
 
 
